@@ -37,19 +37,18 @@ const simulate = (i) => {
 	simulations.push({car, pick, opened, stayed, choice, wins});
 
 	let output = document.getElementById('output');
-	output.innerHTML = `${i} stayed=${stayed ? "yes" : "no"} won=${wins ? "yes" : "no"}`;
+	output.innerHTML = `${i} stay=${stayed ? "yes" : "no"} won=${wins ? "yes" : "no"}`;
 
-	console.log(`${_.padStart(i, pad, ' ')}: car=${car} pick=${pick} opened=${opened} stayed=${stayed} choice=${choice} wins=${wins}`);
+	console.log(`${_.padStart(i, pad, ' ')}: car=${car} pick=${pick} opened=${opened} stayed=${stayed} wins=${wins}`);
 
-	let log = document.getElementById('log');
-	log.innerHTML += `<span class="log">${i}</span>: ` +
-		`car=${car} ` +
-		`pick=${pick} ` +
-		`open=${opened} ` +
-		`stay=${stayed ? "yes" : " no"} ` +
-		`choice=${choice} ` +
-		`wins=${wins ? "yes" : " no"}` +
-		'<br clear="all"/>';
+	// let log = document.getElementById('log');
+	// log.innerHTML += `<span class="log">${i}</span>: ` +
+	// 	`car=${car} ` +
+	// 	`pick=${pick} ` +
+	// 	`open=${opened} ` +
+	// 	`stay=${stayed ? "yes" : " no"} ` +
+	// 	`won=${wins ? "yes" : " no"}` +
+	// 	'<br clear="all"/>';
 };
 
 const template1 = _.template('<table cellpadding="20">' +
@@ -87,6 +86,7 @@ const percentage = (value, count) => ((value / count) * 100).toFixed(2);
 
 const monty = async () => {
 	simulations = [];
+	document.getElementById('simulate').disabled = true;
 
 	let output = document.getElementById('output');
 	output.innerHTML = '';
@@ -140,4 +140,6 @@ const monty = async () => {
 	let totalTable = template2({...summary.total, label: 'Total'});
 
 	output.innerHTML = template1({stayedTable, switchedTable, totalTable});
+
+	document.getElementById('simulate').disabled = false;
 };
