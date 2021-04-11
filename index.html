@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<title>Monty Hall problem simulation</title>
+	<meta name="description" content="Monty Hall problem simulation">
+	<meta name="keywords" content="Monty Hall problem">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+	<script src="monty.js"></script>
+	<style>
+		.log {
+			float: left;
+			width: 30px;
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+<h1>Monty Hall problem simulation</h1>
+<p>This is a simple simulation of the <a href="https://en.wikipedia.org/wiki/Monty_Hall_problem" target="_blank">Monty Hall problem</a>.</p>
+<p>Pick a number of iterations and click <b>Simulate</b>.<br/>The larger the number, the longer it will take for the simulation to complete.</p>
+<p>In each iteration, the simulation will:</p>
+<ol>
+	<li>Randomly put a car behind one door</li>
+	<li>Randomly pick one door</li>
+	<li>Randomly open a non-picked, non-car door</li>
+	<li>Randomly decide whether to switch or not</li>
+	<li>Note Win (W) or Lose (L)</li>
+</ol>
+<p>
+	At the end of the simulation, the sum of Ws and Ls will be equal to the selected number of iterations.<br/>
+	The percentages of Ws and Ls will be displayed.
+</p>
+
+<table border="0">
+	<tr>
+		<td align="right">Delay (ms):</td>
+		<td><input id="delay" type="number" value="10" style="width: 75px; height: 25px;"/></td>
+		<td style="padding-left: 20px; font-size: 8.5pt; color: gray;">Anything below 10ms will be ignored.<br/>Delay affects total simulation time.</td>
+	</tr>
+	<tr>
+		<td align="right">Number of iterations:</td>
+		<td><input id="iterations" type="number" value="1000" style="width: 75px; height: 25px;"/></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<button style="width: 83px; height: 31px; cursor: pointer; font-weight: bold;" onclick="monty()">Simulate</button>
+		</td>
+		<td></td>
+	</tr>
+</table>
+
+<br/>
+<div id="header"></div>
+<br/>
+<div id="output" style="padding-left: 20px;"></div>
+
+<div id="log" style="padding-left: 20px;"></div>
+
+</body>
+</html>
